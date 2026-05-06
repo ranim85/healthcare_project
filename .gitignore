@@ -1,0 +1,18 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+
+# Data and Reports
+data/healthcare_raw.csv
+visuals/*.png
+reports/reflections.txt
+
+# IDEs
+.vscode/
+.idea/
