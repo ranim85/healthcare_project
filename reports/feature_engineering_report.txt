@@ -1,0 +1,32 @@
+FEATURE ENGINEERING REPORT
+==========================
+
+This report summarizes earlier exploratory analysis of engineered features.
+The current implementation keeps the features but fixes leakage risk by fitting normalization statistics only on the training split.
+
+1. PERFORMANCE IMPACT FROM EARLIER RUN
+--------------------------------------
+- Baseline ROC-AUC: 0.7869
+- Engineered ROC-AUC: 0.7797
+- Delta: -0.0072
+
+The engineered feature set did not clearly improve ROC-AUC in that run. It was kept because it improves inspectability and recall in some runs, but it should not be presented as a guaranteed model lift.
+
+2. STATISTICAL SIGNALS
+----------------------
+Strongest earlier signals included:
+- Glucose
+- Glucose_BMI_Interaction
+- Insulin_Glucose_Ratio
+- HOMA_IR
+- Pregnancy_Risk
+
+3. MULTICOLLINEARITY
+--------------------
+Several interaction features had high VIF values. This is expected when derived features reuse the same raw columns. It matters more for coefficient interpretation than for tree-based prediction, but it still makes explanations harder to read.
+
+4. CURRENT POSITION
+-------------------
+- Keep the features for this project.
+- Do not claim they are clinically validated.
+- Re-run this analysis after adding a real validation dataset.

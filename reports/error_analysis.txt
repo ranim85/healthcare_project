@@ -1,0 +1,22 @@
+ERROR ANALYSIS
+==============
+
+This report is from an earlier evaluation run and is kept as a reference.
+
+SUMMARY
+-------
+- Test population: 400
+- False positives: 67
+- False negatives: 40
+
+OBSERVATIONS
+------------
+- False negatives are the more important failure mode for a screening-style model.
+- False positives may increase follow-up burden.
+- The current repository does not yet regenerate this report automatically from the final training pipeline.
+
+NEXT STEPS
+----------
+- Regenerate false positive and false negative profiles after each full training run.
+- Add subgroup slices by age bucket.
+- Add threshold analysis instead of assuming a fixed 0.5 cutoff.

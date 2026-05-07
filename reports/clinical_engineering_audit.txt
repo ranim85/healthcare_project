@@ -1,0 +1,38 @@
+CLINICAL FEATURE ENGINEERING AUDIT
+==================================
+
+1. FEATURES
+-----------
+- HOMA_IR: glucose and insulin interaction used as a rough insulin resistance proxy.
+- BMI_Age_Ratio: BMI normalized by age.
+- Glucose_BMI_Interaction: combined glucose and BMI signal.
+- Metabolic_Risk_Score: train-fitted normalized score across glucose, BMI, insulin, and blood pressure.
+- Pregnancy_Risk: pregnancies scaled by age.
+- Age groups: fixed age buckets for non-linear age effects.
+
+2. LEAKAGE CHECK
+----------------
+- Train/test split happens before preprocessing is fitted.
+- Imputer, feature engineering, scaler, and classifier are fitted only on the training split.
+- Metabolic_Risk_Score stores train-set min/max values during fit.
+- `tests/test_data_leakage.py` checks that one patient's score is unchanged when another patient appears in the same inference batch.
+
+3. MODEL STACK
+--------------
+- Base model: XGBoost classifier.
+- Calibration: CalibratedClassifierCV with sigmoid calibration.
+- Tuning: seeded Optuna search on transformed training folds.
+
+4. LATEST FULL TRAINING SNAPSHOT
+--------------------------------
+- ROC-AUC: 0.7768
+- F1 score: 0.8014
+- Recall/sensitivity: 0.8692
+- Precision/PPV: 0.7434
+- Brier score: 0.1804
+
+5. LIMITS
+---------
+- The data is synthetic.
+- Feature names are clinically inspired, but that does not validate them clinically.
+- SHAP output is useful for model inspection, not causal interpretation.

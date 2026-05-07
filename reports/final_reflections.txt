@@ -1,0 +1,25 @@
+PROJECT NOTES
+=============
+
+1. MODEL PERFORMANCE
+--------------------
+The model has reasonable discrimination on the synthetic dataset. That is enough for local regression checks and API testing. It is not enough for clinical use.
+
+2. CALIBRATION
+--------------
+The model uses sigmoid calibration and tracks Brier score. Calibration should be rechecked on any new dataset.
+
+3. FAIRNESS
+-----------
+Subgroup analysis is not yet part of the standard training output. Age buckets exist in the feature set, but that is not a substitute for subgroup evaluation.
+
+4. DATA QUALITY
+---------------
+Missing values are handled with median imputation. This is simple and stable, but it assumes missingness can be handled from observed values. Real clinical data may violate that assumption.
+
+5. NEXT STEPS
+-------------
+- Add external validation data.
+- Add subgroup performance and calibration plots.
+- Add uncertainty intervals for metrics.
+- Add a safer artifact format or signed model workflow.

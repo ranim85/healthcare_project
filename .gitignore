@@ -12,6 +12,15 @@ ENV/
 data/healthcare_raw.csv
 visuals/*.png
 reports/reflections.txt
+reports/*.log
+reports/drift_report.html
+mlruns/
+mlflow.db
+models/*.joblib
+.pytest_cache/
+.tmp/
+.env
+!.env.example
 
 # IDEs
 .vscode/

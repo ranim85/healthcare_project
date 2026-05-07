@@ -1,0 +1,19 @@
+COMPARATIVE MODEL PERFORMANCE
+=============================
+
+This file preserves an earlier comparison between a baseline model and the engineered feature set.
+It should be treated as exploratory because it was produced before the final refactor.
+
+METRIC          | BASELINE | ENGINEERED | DELTA
+----------------|----------|------------|-------
+ROC-AUC         | 0.7869   | 0.7828     | -0.0041
+F1 score        | 0.8030   | 0.8044     | +0.0014
+Recall          | 0.8308   | 0.8462     | +0.0154
+Precision       | 0.7770   | 0.7666     | -0.0104
+DI ratio        | 1.0000   | 1.0000     | +0.0000
+
+NOTES
+-----
+- Feature engineering improved recall in this run, but reduced ROC-AUC slightly.
+- The final refactored training run should be used as the current reference.
+- Subgroup metrics need to be regenerated in the final pipeline before being treated as reliable.
